@@ -19,6 +19,7 @@ struct ContentView: View {
         let onIncrement: () -> Void
         let onDecrement: () -> Void
         let onAdd: (Int) -> Void
+        let onIncrementAsyc: () -> Void
     }
     
     private func map(state: CounterState) -> Props {
@@ -28,6 +29,8 @@ struct ContentView: View {
             store.dispatch(action: DecrementAction())
         }, onAdd: {
             store.dispatch(action: AddAction(value: $0))
+        }, onIncrementAsyc: {
+            store.dispatch(action: IncrementActionAsyc())
         })
     }
     
@@ -36,7 +39,10 @@ struct ContentView: View {
     var body: some View {
         let props = map(state: store.state.counterState)
         
-        VStack {
+        VStack(spacing: 16) {
+            
+            Spacer()
+            
             Text("\(props.counter)")
                 .padding()
             
@@ -50,6 +56,10 @@ struct ContentView: View {
             
             Button("Add") {
                 props.onAdd(100)
+            }
+            
+            Button("Increment Async") {
+                props.onIncrementAsyc()
             }
             
             Spacer()

@@ -30,6 +30,7 @@ protocol Action { }
 
 struct IncrementAction: Action { }
 struct DecrementAction: Action { }
+struct IncrementActionAsyc: Action { }
 
 
 struct AddTaskAction: Action {
