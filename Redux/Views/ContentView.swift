@@ -61,7 +61,7 @@ struct ContentView: View {
             Spacer()
         }
         .sheet(isPresented: $isPresented) {
-            Text("Add Task View")
+            AddTaskView()
         }
     }
 }
